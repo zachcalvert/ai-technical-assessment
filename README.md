@@ -27,3 +27,9 @@ Then in another terminal session, start the client:
 cd client
 npm run dev
 ```
+
+### Clean up
+All the docker resources created for this project can be destroyed with:
+```
+docker compose down -v
+```
