@@ -5,14 +5,11 @@ import Typography from '@mui/material/Typography';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import { CircularProgress, Paper, Stack } from '@mui/material';
 import Grid from '@mui/material/Grid';
-import Chip from '@mui/material/Chip';
 import { Dialog, DialogTitle } from '@mui/material';
 import Button from '@mui/material/Button';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import PendingActionsIcon from '@mui/icons-material/PendingActions';
-import CheckIcon from '@mui/icons-material/Check';
 import AddIcon from '@mui/icons-material/Add';
 
 import { List, ListItem, ListItemText } from '@mui/material';
@@ -36,17 +33,6 @@ export default function FieldList() {
   const formattedDate = (isoDateStr) => {
     const date = parseISO(isoDateStr);
     return format(date, 'h:mm a');
-  }
-
-  const renderStatus = (field) => {
-    console.log(field.status)
-    if (field.status === "CERTIFIED") {
-      return <Chip sx={{ marginTop: 'auto!important', marginBottom: 'auto!important' }} size="small" color='success' icon={<CheckIcon />} label="Certified" />
-    } else if (field.status === "COMPLETE") {
-      return <Chip sx={{ marginTop: 'auto!important', marginBottom: 'auto!important' }} size="small" color="error" icon={<CheckIcon />} label="Not certified" />
-    } else {
-      return <Chip sx={{ marginTop: 'auto!important', marginBottom: 'auto!important' }} size="small" icon={<PendingActionsIcon />} label="Pending" />
-    }
   }
 
   function fetchFields() {
@@ -90,12 +76,11 @@ export default function FieldList() {
 
       <List>
         {fields.map((field) => (
-          <ListItem key={field.id_hash} button component={Link} to={`/fields/${field.id_hash}`} divider>
+          <ListItem key={field.id_hash} button component={Link} to={`/field/${field.id_hash}`} divider>
             <ListItemText
               primary={
                 <Stack direction="row" spacing={2} alignItems="center">
                   <Typography variant="h6">{field.name}</Typography>
-                  {renderStatus(field)}
                 </Stack>
               }
               secondary={
