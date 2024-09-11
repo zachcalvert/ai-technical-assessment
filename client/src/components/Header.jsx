@@ -23,7 +23,7 @@ function Header(props) {
       <CustomAppBar position="static" enableColorOnDark>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <GrassIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+            <GrassIcon />
             <Typography
               variant="h6"
               noWrap
@@ -45,7 +45,13 @@ function Header(props) {
               
                 <Box sx={{ marginRight: '1rem' }}>
                   <Stack direction="row" spacing={4}>
-                    <Typography variant="subtitle2" sx={{ marginTop: 'auto!important', marginBottom: 'auto!important' }}>
+                    <Typography
+                      variant="subtitle2"
+                      sx={{
+                        display: { xs: 'none', md: 'flex' },
+                        marginTop: 'auto!important',
+                        marginBottom: 'auto!important'
+                      }}>
                       Welcome, {user.email}
                     </Typography>
                     <Link
