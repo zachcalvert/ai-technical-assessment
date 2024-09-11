@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { Button, Grid, Typography, CircularProgress, Card, CardContent, Box } from '@mui/material';
@@ -53,13 +53,14 @@ const FieldDetail = () => {
   const { lat, lng } = parseLocation(fieldData?.location);
 
   return (
-    <Grid container spacing={2} justifyContent="center">
-      <Grid item xs={12} display="flex" justifyContent="space-between" alignItems="center" sx={{ marginBottom: '1rem' }}>
+    <Grid container spacing={2} alignContent="start">
+      <Grid item xs={1} />
+      <Grid item xs={10} display="flex" justifyContent="space-between" alignItems="center" sx={{ marginBottom: '4rem' }}>
         <Button 
           color="primary" 
           variant="text" 
           startIcon={<ArrowBackIcon />} 
-          onClick={() => navigate(-1)} // navigate back to the previous page
+          onClick={() => navigate(-1)}
         >
           Back
         </Button>
@@ -72,8 +73,10 @@ const FieldDetail = () => {
           </Button>
         </div>
       </Grid>
+      <Grid item xs={1} />
       
-      <Grid item xs={12} sm={8} md={6} lg={4}>
+      <Grid item xs={3} />
+      <Grid item xs={6}>
         <Card variant="outlined" sx={{ minWidth: 275 }}>
           <CardContent>
             <Typography variant="h5" component="div">
@@ -94,6 +97,7 @@ const FieldDetail = () => {
           </CardContent>
         </Card>
       </Grid>
+      <Grid item xs={3} />
 
       {/* Edit Dialog */}
       <Dialog
