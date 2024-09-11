@@ -6,6 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { styled } from '@mui/material';
 import GrassIcon from '@mui/icons-material/Grass';
@@ -45,15 +46,14 @@ function Header(props) {
               
                 <Box sx={{ marginRight: '1rem' }}>
                   <Stack direction="row" spacing={4}>
-                    <Typography
-                      variant="subtitle2"
-                      sx={{
-                        display: { xs: 'none', md: 'flex' },
-                        marginTop: 'auto!important',
-                        marginBottom: 'auto!important'
-                      }}>
-                      Welcome, {user.email}
-                    </Typography>
+                    <Link
+                      href="/profile"
+                      sx={{ color: 'white', textDecoration: 'none' }}
+                    >
+                      <Button color="secondary" variant="contained" startIcon={<AccountBoxIcon />}>
+                        Profile
+                      </Button>
+                    </Link>
                     <Link
                       href="/"
                       sx={{ color: 'white', textDecoration: 'none' }}
