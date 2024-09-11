@@ -104,12 +104,12 @@ export default function FieldList() {
                   <Typography variant="body2">Location: {field.location}</Typography>
                   {field.created && (
                     <Typography variant="body2">
-                      Last updated at: {formattedDate(field.created)}
+                      Created: {formattedDate(field.created)}
                     </Typography>
                   )}
                   {field.last_updated && (
                     <Typography variant="body2">
-                      Last updated at: {formattedDate(field.last_updated)}
+                      Last updated: {formattedDate(field.last_updated)}
                     </Typography>
                   )}
                 </Stack>
