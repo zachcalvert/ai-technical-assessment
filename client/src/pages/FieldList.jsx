@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { parseISO, format } from 'date-fns';
 import Typography from '@mui/material/Typography';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { CircularProgress, Paper, Stack } from '@mui/material';
+import { CircularProgress, Divider, Paper, Stack } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import { Dialog, DialogTitle } from '@mui/material';
 import Button from '@mui/material/Button';
@@ -57,18 +57,24 @@ export default function FieldList() {
 
   return (
     <Grid container>
-      <Grid item xs={12} textAlign='right' sx={{ marginBottom: '1rem' }}>
-          <Button color="success" variant="contained" startIcon={<AddIcon />} onClick={() => setAddFieldOpen(true)} sx={{ marginRight: '1rem' }}>
-            Add
-          </Button>
-
-          <Button color="info" variant="contained" startIcon={<AttachFileIcon />} onClick={() => setFieldUploaderOpen(true)}>
-            Upload
-          </Button>
+      <Grid item xs={4}>
+        <div style={{ marginLeft: '1rem' }}>
+          <Typography variant="h5" color="text.secondary">Fields</Typography>
+        </div>
+        
+      </Grid>
+      <Grid item xs={8} textAlign='right' sx={{ marginBottom: '1rem' }}>
+        <Button disableElevation color="primary" variant="contained" startIcon={<AddIcon />} onClick={() => setAddFieldOpen(true)} sx={{ marginRight: '1rem', border: '1px solid #333333' }}>
+          Add
+        </Button>
+        <Button disableElevation color="secondary" variant="contained" startIcon={<AttachFileIcon />} onClick={() => setFieldUploaderOpen(true)} sx={{ border: '1px solid #333333' }}>
+          Upload
+        </Button>
       </Grid>
     <Grid item xs={12}>
 
-    <Paper elevation={1} style={{ padding: '1rem' }}>
+    <Divider />
+    <Paper elevation={1}>
 
       {!fields.length && (
         <Typography variant='h6'>No fields to display.</Typography>
@@ -79,12 +85,12 @@ export default function FieldList() {
           <ListItem key={field.id_hash} button component={Link} to={`/field/${field.id_hash}`} divider>
             <ListItemText
               primary={
-                <Stack direction="row" spacing={2} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="center">
                   <Typography variant="h6">{field.name}</Typography>
                 </Stack>
               }
               secondary={
-                <Stack spacing={1}>
+                <Stack spacing={2}>
                   <Typography variant="body2">Acreage: {field.acreage}</Typography>
                   <Typography variant="body2">Location: {field.location}</Typography>
                   {field.created && (

@@ -16,24 +16,30 @@ import AuthService from './services/auth';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#2F7C31',
+      main: '#C1E1C1',
     },
     secondary: {
-      main: '#AFE1AF',
+      main: '#C3B1E1',
+    },
+    tertiary: {
+      main: "#C3B1E1"
+    },
+    black: {
+      main: "#333333"
     },
     background: {
-      default: '#333333', // Page background color
+      default: '#333333',
     },
     text: {
-      primary: '#333333', // Primary text color (dark gray)
-      secondary: '#333333', // Secondary text color (light gray)
+      primary: '#333333',
+      secondary: '#333333',
     },
     action: {
-      hover: '#AFE1AF', // Light yellow for hover effects
+      hover: '#C1E1C1',
     },
   },
   typography: {
-    fontFamily: 'Helvetica, Arial, sans-serif', // Default font family
+    fontFamily: 'Helvetica, Arial, sans-serif',
   },
 });
 

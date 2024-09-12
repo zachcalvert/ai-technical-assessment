@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { Button, Grid, Typography, CircularProgress, Card, CardContent, Box } from '@mui/material';
+import { Button, Grid, Typography, CircularProgress, Card, CardContent, Box, Stack, Divider, Paper } from '@mui/material';
 import { Dialog, DialogTitle } from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
@@ -53,51 +53,50 @@ const FieldDetail = () => {
   const { lat, lng } = parseLocation(fieldData?.location);
 
   return (
-    <Grid container spacing={2} alignContent="start">
+    <Grid container spacing={0} alignContent="start">
       <Grid item xs={1} />
       <Grid item xs={10} display="flex" justifyContent="space-between" alignItems="center" sx={{ marginBottom: '4rem' }}>
         <Button 
-          color="primary" 
+          color="black" 
           variant="text" 
           startIcon={<ArrowBackIcon />} 
           onClick={() => navigate(-1)}
         >
           Back
         </Button>
-        <div>
-          <Button color="info" variant="contained" startIcon={<EditIcon />} onClick={() => setEditFieldOpen(true)} sx={{ marginRight: '1rem' }}>
+        <Stack direction="row" spacing={4}>
+          <Button color="primary" disableElevation variant="contained" startIcon={<EditIcon />} onClick={() => setEditFieldOpen(true)} sx={{ marginRight: '1rem', border: '1px solid #333333' }}>
             Edit
           </Button>
-          <Button color="error" variant="contained" startIcon={<DeleteIcon />} onClick={() => setDeleteFieldOpen(true)}>
+          <Button color="tertiary" disableElevation variant="contained" startIcon={<DeleteIcon />} onClick={() => setDeleteFieldOpen(true)} sx={{ border: '1px solid #333333' }}>
             Delete
           </Button>
-        </div>
+        </Stack>
       </Grid>
       <Grid item xs={1} />
       
-      <Grid item xs={3} />
-      <Grid item xs={6}>
-        <Card variant="outlined" sx={{ minWidth: 275 }}>
-          <CardContent>
-            <Typography variant="h5" component="div">
+      <Grid item xs={1} />
+      <Grid item xs={10}>
+        <Paper elevation={0} sx={{ border: "1px solid #C1E1C1", padding: "24px" }}>
+            <Typography variant="h5" gutterBottom component="div">
               {fieldData?.name}
             </Typography>
-            <Typography variant="body1" color="text.secondary">
+            <Divider />
+            <Typography variant="body1" color="text.secondary" sx={{ marginTop: "8px" }}>
               Acreage: {fieldData?.acreage}
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              Latitude: {lat}, Longitude: {lng}
+              Coordinates: {lat}, {lng}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" sx={{ marginTop: "8px" }}>
               Created: {new Date(fieldData?.created).toLocaleString()}
             </Typography>
             <Typography variant="body2" color="text.secondary">
               Last Updated: {new Date(fieldData?.last_updated).toLocaleString()}
             </Typography>
-          </CardContent>
-        </Card>
+        </Paper>
       </Grid>
-      <Grid item xs={3} />
+      <Grid item xs={1} />
 
       {/* Edit Dialog */}
       <Dialog

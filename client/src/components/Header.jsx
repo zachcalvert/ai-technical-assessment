@@ -31,8 +31,9 @@ function Header(props) {
               component="a"
               href="/"
               sx={{
-                mr: 2,
+                ml: 2,
                 display: { xs: 'none', md: 'flex' },
+                letterSpacing: '.1rem',
                 fontWeight: 600,
                 color: 'inherit',
                 textDecoration: 'none',
@@ -48,21 +49,21 @@ function Header(props) {
                   <Stack direction="row" spacing={4}>
                     <Link
                       href="/profile"
-                      sx={{ color: 'white', textDecoration: 'none' }}
+                      sx={{ color: 'black', textDecoration: 'none' }}
                     >
-                      <Button color="secondary" variant="contained" startIcon={<AccountBoxIcon />}>
+                      <Button disableElevation color="primary" variant="contained" startIcon={<AccountBoxIcon />}>
                         Profile
                       </Button>
                     </Link>
                     <Link
                       href="/"
-                      sx={{ color: 'white', textDecoration: 'none' }}
+                      sx={{ color: 'black', textDecoration: 'none' }}
                       onClick={() => {
                         localStorage.removeItem('access');
                         localStorage.removeItem('refresh');
                       }}
                     >
-                      <Button color="error" variant="contained" endIcon={<LogoutIcon />}>
+                      <Button disableElevation color="primary" variant="contained" endIcon={<LogoutIcon />}>
                         Logout
                       </Button>
                     </Link>

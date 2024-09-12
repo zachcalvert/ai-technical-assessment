@@ -4,6 +4,7 @@ from django.contrib.gis.db import models as geomodels
 
 from core.models import BaseModel
 
+
 class Field(BaseModel):
     name = models.CharField(max_length=255)
     acreage = models.FloatField()
